@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     [SerializeField] private int _attackDamage;
     [SerializeField] private LayerMask enemyLayers;
     private float _attackTimer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,24 +39,6 @@ public class Player : MonoBehaviour
     {
         _direction = Input.GetAxisRaw("Horizontal");
 
-        // if (Input.GetButtonDown("Attack") && !_isShielding)
-        // {
-        //     StartCoroutine(Attack());
-
-        // }
-
-        // if (Input.GetButtonDown("Shield"))
-        // {
-        //     _isShielding = true;
-        //     _animator.SetBool("isShielding", true);
-        // }
-
-        // if (Input.GetButtonUp("Shield"))
-        // {
-        //     _isShielding = false;
-        //     _animator.SetBool("isShielding", false);
-        // }
-
         if (Input.GetButtonDown("Jump") && _c2d.IsTouchingLayers(LayerMask.GetMask("Foreground")))
         {
             Vector2 jumpVelocity = new Vector2(0f, _jumpSpeed);
@@ -64,12 +47,8 @@ public class Player : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        if (_isAttacking || _isShielding){
-            _rb.velocity = Vector2.zero;
-        } else {
-            _rb.velocity = new Vector2(_direction * _speed, _rb.velocity.y);
-            FlipSprite();
-        }
+        _rb.velocity = new Vector2(_direction * _speed, _rb.velocity.y);
+        FlipSprite();
         
         if (_direction != 0){
             _animator.SetBool("isMoving", true);
@@ -89,19 +68,4 @@ public class Player : MonoBehaviour
         }
     }
 
-    public IEnumerator Attack(){
-        _isAttacking = true;
-        _animator.SetTrigger("Attack");
-        Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(attackPoint.transform.position, attackRange, enemyLayers);
-
-        foreach(Collider2D enemy in enemiesHit){
-            enemy.GetComponent<Enemy>().TakeDamage(_attackDamage);
-        }
-        yield return new WaitForSeconds(0.5f);
-        _isAttacking = false;
-    }
-
-    private void OnDrawGizmosSelected() {
-        Gizmos.DrawWireSphere(attackPoint.transform.position, attackRange);
-    }
 }
