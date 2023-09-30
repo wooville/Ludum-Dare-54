@@ -15,12 +15,20 @@ public class Player : MonoBehaviour
     private float _direction;
     private bool _isFacingRight = true;
 
+    private bool _hasDoubleJump;
+    private bool _hasDash;
+    private bool _hasLight;
+
     // Start is called before the first frame update
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
         _sprite = GetComponent<Sprite>();
         _bodyCollider = GetComponent<Collider2D>();
+
+        _hasDoubleJump = false;
+        _hasDash = false;
+        _hasLight = false;
     }
 
     // Update is called once per frame
