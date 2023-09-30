@@ -19,6 +19,9 @@ public class Player : MonoBehaviour
     private bool _hasDash;
     private bool _hasLight;
 
+    public delegate void PickupDelegate(Interaction.PICKUPS pickup);
+    public static PickupDelegate pickupDelegate;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +32,8 @@ public class Player : MonoBehaviour
         _hasDoubleJump = false;
         _hasDash = false;
         _hasLight = false;
+
+        pickupDelegate += CheckPickup;
     }
 
     // Update is called once per frame
@@ -68,6 +73,21 @@ public class Player : MonoBehaviour
             Vector3 localScale = transform.localScale;
             localScale.x *= -1f;
             transform.localScale = localScale;
+        }
+    }
+
+    private void CheckPickup(Interaction.PICKUPS pickup){
+        switch(pickup){
+            case Interaction.PICKUPS.WINGS:
+                _hasDoubleJump = true;
+                Debug.Log(_hasDoubleJump);
+                break;
+            case Interaction.PICKUPS.LIGHT:
+                _hasLight = true;
+                break;
+            case Interaction.PICKUPS.BOOTS:
+                _hasDash = true;
+                break;
         }
     }
 

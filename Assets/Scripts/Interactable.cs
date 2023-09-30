@@ -5,6 +5,8 @@ using UnityEngine;
 public class Interactable : MonoBehaviour
 {
     public bool isInteractable {get;set;} = false;
+    [SerializeField]
+    private Interaction.PICKUPS pickup = Interaction.PICKUPS.NONE;
     // protected Label buttonPromptLabel;
 
     // Start is called before the first frame update
@@ -15,6 +17,9 @@ public class Interactable : MonoBehaviour
 
     public virtual void Interact()
     {
+        if (pickup != Interaction.PICKUPS.NONE){
+            Player.pickupDelegate?.Invoke(pickup);
+        }
         Destroy(gameObject);
     }
 
