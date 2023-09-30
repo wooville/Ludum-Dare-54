@@ -128,7 +128,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.06, y: -0.9}
@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 8024458874813392731}
   - component: {fileID: 9100831160198720050}
   - component: {fileID: 6625570013432866184}
-  - component: {fileID: 6259854984049240802}
+  - component: {fileID: 8733250732421897133}
   - component: {fileID: 1969559152423933046}
   - component: {fileID: 5768844863527201658}
   - component: {fileID: 1969715328285707669}
@@ -175,7 +175,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6920538415672709506}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.171, y: 2.814, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -263,8 +263,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &6259854984049240802
-BoxCollider2D:
+--- !u!70 &8733250732421897133
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -295,19 +295,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.040231764, y: -0.4236881}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.6411761, y: 1.1473768}
-  m_EdgeRadius: 0
+  m_Offset: {x: -0.08428764, y: -0.42516673}
+  m_Size: {x: 0.5509877, y: 1.1496665}
+  m_Direction: 0
 --- !u!95 &1969559152423933046
 Animator:
   serializedVersion: 5
@@ -344,6 +334,7 @@ MonoBehaviour:
   _animator: {fileID: 1969559152423933046}
   _speed: 4
   _jumpSpeed: 6
+  _dashSpeed: 500
   _footCollider: {fileID: 2485233328312753803}
 --- !u!114 &1969715328285707669
 MonoBehaviour:
@@ -352,7 +343,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6920538415672709506}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eadce3e03820f9447b2b9117ec2d7887, type: 3}
   m_Name: 

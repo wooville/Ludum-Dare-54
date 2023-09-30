@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpSpeed;
+    [SerializeField] private float _dashSpeed;
+
     private Rigidbody2D _rb;
     private Sprite _sprite;
     private Collider2D _bodyCollider;
@@ -19,10 +21,14 @@ public class Player : MonoBehaviour
     private bool _hasDash;
     private bool _hasLight;
 
-    private bool canJump = true;
     private bool doubleJumped = false;
+    private bool dashed = false;
     public delegate void PickupDelegate(Interaction.PICKUPS pickup);
     public static PickupDelegate pickupDelegate;
+
+    private float dashForce;
+    private float moveForce;
+    private bool applyDash;
 
     // Start is called before the first frame update
     void Start()
@@ -31,8 +37,8 @@ public class Player : MonoBehaviour
         _sprite = GetComponent<Sprite>();
         _bodyCollider = GetComponent<Collider2D>();
 
-        _hasDoubleJump = true;
-        _hasDash = false;
+        _hasDoubleJump = false;
+        _hasDash = true;
         _hasLight = false;
 
         pickupDelegate += CheckPickup;
@@ -48,6 +54,15 @@ public class Player : MonoBehaviour
     {
         _direction = Input.GetAxisRaw("Horizontal");
 
+        // Horizontal Movement
+        if (!dashed)
+        {
+            _rb.velocity = new Vector2(_direction * _speed, _rb.velocity.y);
+        }
+        
+
+        FlipSprite();
+
         if (Input.GetButtonDown("Jump"))
         {
             if (_footCollider.IsTouchingLayers(LayerMask.GetMask("Foreground")))
@@ -61,20 +76,36 @@ public class Player : MonoBehaviour
                 Vector2 jumpVelocity = new Vector2(0f, _jumpSpeed);
                 _rb.velocity = new Vector2(_rb.velocity.x, _jumpSpeed);
             }
+
         }
 
+        if (Input.GetButtonDown("Fire1"))
+        {
+            if (_hasDash && !dashed && !_footCollider.IsTouchingLayers(LayerMask.GetMask("Foreground")))
+            {
+                Debug.Log("dashing");
+
+                dashed = true;
+                applyDash = true;
+                dashForce = (_isFacingRight ? 1f : -1f) * _dashSpeed;
+                Debug.Log(dashForce);
+            }
+        }
     }
 
     private void FixedUpdate() {
-        _rb.velocity = new Vector2(_direction * _speed, _rb.velocity.y);
+        if (applyDash)
+        {
+            _rb.AddForce(new Vector2(dashForce, 0f));
+            applyDash = false;
+        }
 
-        
+
         if (_footCollider.IsTouchingLayers(LayerMask.GetMask("Foreground")))
         {
             doubleJumped = false;
+            dashed = false;
         }
-
-        FlipSprite();
         
         if (_direction != 0){
             _animator.SetBool("isMoving", true);
