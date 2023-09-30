@@ -10,7 +10,7 @@ public class Interactable : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        // get ui component to be toggled
     }
 
     public virtual void Interact()
@@ -19,21 +19,21 @@ public class Interactable : MonoBehaviour
     }
 
     public void ToggleButtonPrompt(){
-        Debug.Log(name + " interactable");
+        // Debug.Log(name + " interactable");
         // buttonPromptContainer.Visible = !buttonPromptContainer.Visible;
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        // if (other.IsInGroup("Player")){
-        //     isInteractable = true;
-        //     ToggleButtonPrompt();
-        // }
+        if (other.tag.Equals("Player")){
+            isInteractable = true;
+            ToggleButtonPrompt();
+        }
     }
     
     private void OnTriggerExit2D(Collider2D other) {
-        // if (other.IsInGroup("Player")){
-        //     isInteractable = false;
-        //     ToggleButtonPrompt();
-        // }
+        if (other.tag.Equals("Player")){
+            isInteractable = false;
+            ToggleButtonPrompt();
+        }
     }
 }
