@@ -19,6 +19,9 @@ public class Player : MonoBehaviour
     private bool _hasDash;
     private bool _hasLight;
 
+    private bool canJump = true;
+    private bool doubleJumped = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +29,7 @@ public class Player : MonoBehaviour
         _sprite = GetComponent<Sprite>();
         _bodyCollider = GetComponent<Collider2D>();
 
-        _hasDoubleJump = false;
+        _hasDoubleJump = true;
         _hasDash = false;
         _hasLight = false;
     }
@@ -41,15 +44,31 @@ public class Player : MonoBehaviour
     {
         _direction = Input.GetAxisRaw("Horizontal");
 
-        if (Input.GetButtonDown("Jump") && _footCollider.IsTouchingLayers(LayerMask.GetMask("Foreground")))
+        if (Input.GetButtonDown("Jump"))
         {
-            Vector2 jumpVelocity = new Vector2(0f, _jumpSpeed);
-            _rb.velocity += jumpVelocity;
+            if (_footCollider.IsTouchingLayers(LayerMask.GetMask("Foreground")))
+            {
+                Vector2 jumpVelocity = new Vector2(0f, _jumpSpeed);
+                _rb.velocity = new Vector2(_rb.velocity.x, _jumpSpeed);
+            }
+            else if (_hasDoubleJump && !doubleJumped)
+            {
+                doubleJumped = true;
+                Vector2 jumpVelocity = new Vector2(0f, _jumpSpeed);
+                _rb.velocity = new Vector2(_rb.velocity.x, _jumpSpeed);
+            }
         }
+
     }
 
     private void FixedUpdate() {
         _rb.velocity = new Vector2(_direction * _speed, _rb.velocity.y);
+
+        
+        if (_footCollider.IsTouchingLayers(LayerMask.GetMask("Foreground")))
+        {
+            doubleJumped = false;
+        }
 
         FlipSprite();
         
