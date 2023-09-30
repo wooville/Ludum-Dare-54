@@ -9,6 +9,7 @@ public class Boundaries : MonoBehaviour
     public static Vector2 screenBounds;
     private float _objectWidth;
     // private float _objectHeight;
+    
     // Start is called before the first frame update
     void Start()
     {
