@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
         _bodyCollider = GetComponent<Collider2D>();
 
         _hasDoubleJump = false;
-        _hasDash = true;
+        _hasDash = false;
         _hasLight = false;
 
         pickupDelegate += CheckPickup;
@@ -128,8 +128,8 @@ public class Player : MonoBehaviour
     private void CheckPickup(Interaction.PICKUPS pickup){
         switch(pickup){
             case Interaction.PICKUPS.WINGS:
-                _hasDoubleJump = true;
-                Debug.Log(_hasDoubleJump);
+                _hasDash = true;
+                Debug.Log(_hasDash);
                 break;
             case Interaction.PICKUPS.LIGHT:
                 _hasLight = true;

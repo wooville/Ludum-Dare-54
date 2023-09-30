@@ -1398,6 +1398,10 @@ PrefabInstance:
       propertyPath: _gameCamera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 5768844863527201658, guid: a37dfed8477739b41b68c70d6aa428bc, type: 3}
+      propertyPath: _dashSpeed
+      value: 2000
+      objectReference: {fileID: 0}
     - target: {fileID: 6920538415672709506, guid: a37dfed8477739b41b68c70d6aa428bc, type: 3}
       propertyPath: m_Name
       value: Player
