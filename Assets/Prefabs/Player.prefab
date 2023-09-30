@@ -131,7 +131,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.06, y: -0.9}
+  m_Offset: {x: -0.08, y: -0.9}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -142,7 +142,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.39, y: 0.21}
+  m_Size: {x: 0.42, y: 0.21}
   m_EdgeRadius: 0
 --- !u!1 &6920538415672709506
 GameObject:
@@ -157,6 +157,7 @@ GameObject:
   - component: {fileID: 6625570013432866184}
   - component: {fileID: 8733250732421897133}
   - component: {fileID: 1969559152423933046}
+  - component: {fileID: 3365096216722508514}
   - component: {fileID: 5768844863527201658}
   - component: {fileID: 1969715328285707669}
   - component: {fileID: 1169739911761586930}
@@ -319,6 +320,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3365096216722508514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6920538415672709506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 907d6164edd835c42a52f27ccba18b15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCollider: {fileID: 8733250732421897133}
 --- !u!114 &5768844863527201658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,7 +347,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 1969559152423933046}
   _speed: 4
-  _jumpSpeed: 6
+  _jumpSpeed: 9
   _dashSpeed: 500
   _footCollider: {fileID: 2485233328312753803}
 --- !u!114 &1969715328285707669

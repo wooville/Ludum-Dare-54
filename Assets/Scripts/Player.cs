@@ -17,8 +17,8 @@ public class Player : MonoBehaviour
     private float _direction;
     private bool _isFacingRight = true;
 
-    private bool _hasDoubleJump;
-    private bool _hasDash;
+    [SerializeField] private bool _hasDoubleJump;
+    [SerializeField] private bool _hasDash;
     private bool _hasLight;
 
     private bool doubleJumped = false;
@@ -36,9 +36,6 @@ public class Player : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _sprite = GetComponent<Sprite>();
         _bodyCollider = GetComponent<Collider2D>();
-
-        _hasDoubleJump = false;
-        _hasDash = false;
         _hasLight = false;
 
         pickupDelegate += CheckPickup;
