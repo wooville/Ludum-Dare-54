@@ -43,6 +43,9 @@ public class Player : MonoBehaviour
     public delegate void PickupDelegate(Interaction.PICKUPS pickup);
     public static PickupDelegate pickupDelegate;
 
+    private RespawnManager respawnManager;
+    [SerializeField] private float respawnTimer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,6 +59,8 @@ public class Player : MonoBehaviour
         DialogueUI.endDialogueDelegate += UnlockCharacterMovement;
         PickupInfoUI.initiatePickupDelegate += LockCharacterMovement;
         PickupInfoUI.endPickupDelegate += UnlockCharacterMovement;
+
+        respawnManager = GameObject.FindObjectOfType<RespawnManager>();
     }
 
     // Update is called once per frame
@@ -65,7 +70,7 @@ public class Player : MonoBehaviour
 
         CheckGrounded();
         CheckInput();
-        
+
         // CheckJumping();
 
 
@@ -73,16 +78,39 @@ public class Player : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        // Death
+        if (collision.gameObject.tag == "Enemy" && _isAlive)
         {
-            Debug.Log("die");
-            _isAlive = false;
-            _animator.SetBool("isDying", true);
+            StartCoroutine(Death(collision));
+        }
+    }
 
-            Vector2 deathDir = (_rb.position - (Vector2)collision.transform.position).normalized;
+    private IEnumerator Death(Collision2D collision)
+    {
+        Debug.Log("die");
+        _isAlive = false;
+        _animator.SetBool("isDying", true);
+
+        ContactPoint2D contact = collision.contacts[0];
+
+        Vector2 deathDir = (_rb.position - contact.point).normalized;
 
 
-            _rb.AddForce(deathDir * _deathForce);
+        _rb.AddForce(deathDir * _deathForce);
+
+
+        yield return new WaitForSeconds(respawnTimer);
+        respawnManager.RespawnPlayer();
+        _isAlive = true;
+        _animator.SetBool("isDying", false);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        // Checkpoint
+        if (other.CompareTag("Checkpoint"))
+        {
+            respawnManager.SetRespawnPoint(other.transform.position);
         }
     }
 

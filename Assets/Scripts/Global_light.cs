@@ -20,7 +20,6 @@ public class Global_lights : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(playerObject.transform.position);
         if ((playerObject.transform.position[0]>-90 && playerObject.transform.position[1]<-11) && (playerObject.transform.position[0]<47 && playerObject.transform.position[1]>-105))
         {
             if (playerLighting.intensity >= 0f && Time.time > LightTimer)
