@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
 public class Interactable : MonoBehaviour
@@ -22,6 +23,10 @@ public class Interactable : MonoBehaviour
     }
     
     private void OnTriggerExit2D(Collider2D other) {
+        ExitInteractArea(other);
+    }
+
+    public virtual void ExitInteractArea(Collider2D other){
         if (other.tag.Equals("Player")){
             isInteractable = false;
             interactionIndicator.SetActive(false);

@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     private Sprite _sprite;
     private Collider2D _bodyCollider;
     [SerializeField] private Collider2D _footCollider;
+    private bool _isGrounded;
     private float _direction;
     private bool _isFacingRight = true;
 
@@ -29,6 +30,7 @@ public class Player : MonoBehaviour
     private float dashForce;
     private float moveForce;
     private bool applyDash;
+    private bool _canMove = true;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +44,8 @@ public class Player : MonoBehaviour
         _hasLight = false;
 
         pickupDelegate += CheckPickup;
+        DialogueUI.initiateDialogueDelegate += LockCharacterMovement;
+        DialogueUI.endDialogueDelegate += UnlockCharacterMovement;
     }
 
     // Update is called once per frame
@@ -54,43 +58,49 @@ public class Player : MonoBehaviour
     {
         _direction = Input.GetAxisRaw("Horizontal");
 
-        // Horizontal Movement
-        if (!dashed)
-        {
-            _rb.velocity = new Vector2(_direction * _speed, _rb.velocity.y);
+        if (_canMove){
+            // Horizontal Movement
+            if (!dashed)
+            {
+                _rb.velocity = new Vector2(_direction * _speed, _rb.velocity.y);
+            }
+            
+
+            FlipSprite();
+
+            if (Input.GetButtonDown("Jump"))
+            {
+                if (_footCollider.IsTouchingLayers(LayerMask.GetMask("Foreground")))
+                {
+                    Vector2 jumpVelocity = new Vector2(0f, _jumpSpeed);
+                    _rb.velocity = new Vector2(_rb.velocity.x, _jumpSpeed);
+                }
+                else if (_hasDoubleJump && !doubleJumped)
+                {
+                    doubleJumped = true;
+                    Vector2 jumpVelocity = new Vector2(0f, _jumpSpeed);
+                    _rb.velocity = new Vector2(_rb.velocity.x, _jumpSpeed);
+                }
+
+            }
+
+            if (Input.GetButtonDown("Fire1"))
+            {
+                if (_hasDash && !dashed && !_footCollider.IsTouchingLayers(LayerMask.GetMask("Foreground")))
+                {
+                    Debug.Log("dashing");
+
+                    dashed = true;
+                    applyDash = true;
+                    dashForce = (_isFacingRight ? 1f : -1f) * _dashSpeed;
+                    Debug.Log(dashForce);
+                }
+            }
+        } else {
+            _rb.velocity = Vector2.zero;
         }
+
         
-
-        FlipSprite();
-
-        if (Input.GetButtonDown("Jump"))
-        {
-            if (_footCollider.IsTouchingLayers(LayerMask.GetMask("Foreground")))
-            {
-                Vector2 jumpVelocity = new Vector2(0f, _jumpSpeed);
-                _rb.velocity = new Vector2(_rb.velocity.x, _jumpSpeed);
-            }
-            else if (_hasDoubleJump && !doubleJumped)
-            {
-                doubleJumped = true;
-                Vector2 jumpVelocity = new Vector2(0f, _jumpSpeed);
-                _rb.velocity = new Vector2(_rb.velocity.x, _jumpSpeed);
-            }
-
-        }
-
-        if (Input.GetButtonDown("Fire1"))
-        {
-            if (_hasDash && !dashed && !_footCollider.IsTouchingLayers(LayerMask.GetMask("Foreground")))
-            {
-                Debug.Log("dashing");
-
-                dashed = true;
-                applyDash = true;
-                dashForce = (_isFacingRight ? 1f : -1f) * _dashSpeed;
-                Debug.Log(dashForce);
-            }
-        }
     }
 
     private void FixedUpdate() {
@@ -107,7 +117,7 @@ public class Player : MonoBehaviour
             dashed = false;
         }
         
-        if (_direction != 0){
+        if (_direction != 0 && _canMove){
             _animator.SetBool("isMoving", true);
         } else {
             _animator.SetBool("isMoving", false);
@@ -116,7 +126,7 @@ public class Player : MonoBehaviour
 
     private void FlipSprite()
     {
-        if (_isFacingRight && _direction < 0f || !_isFacingRight && _direction > 0f)
+        if (_canMove && _isFacingRight && _direction < 0f || !_isFacingRight && _direction > 0f)
         {
             _isFacingRight = !_isFacingRight;
             Vector3 localScale = transform.localScale;
@@ -138,6 +148,13 @@ public class Player : MonoBehaviour
                 _hasDash = true;
                 break;
         }
+    }
+    private void LockCharacterMovement(DialogueObject dialogueObject){
+        _canMove = false;
+    }
+
+    private void UnlockCharacterMovement(){
+        _canMove = true;
     }
 
 }

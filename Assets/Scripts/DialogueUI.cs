@@ -12,12 +12,15 @@ public class DialogueUI : MonoBehaviour
     private Typewriter _typewriter;
     public delegate void InitiateDialogueDelegate(DialogueObject dialogueObject);
     public static InitiateDialogueDelegate initiateDialogueDelegate;
+    public delegate void EndDialogueDelegate();
+    public static EndDialogueDelegate endDialogueDelegate;
 
 
     private void Start() {
         _typewriter = GetComponent<Typewriter>();
         CloseDialogueBox();
         initiateDialogueDelegate += ShowDialogue;
+        endDialogueDelegate += CloseDialogueBox;
         // ShowDialogue(_testDialogue);
         
     }
@@ -32,7 +35,7 @@ public class DialogueUI : MonoBehaviour
             yield return _typewriter.Run(dialogue, _textLabel);
             yield return new WaitUntil(() => Input.GetButtonDown("Jump"));
         }
-        CloseDialogueBox();
+        endDialogueDelegate?.Invoke();
     }
 
     private void CloseDialogueBox(){
