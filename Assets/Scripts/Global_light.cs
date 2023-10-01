@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-public class Cave_Darkness : MonoBehaviour
+public class Global_lights : MonoBehaviour
 {
     private Light2D playerLighting;
     private GameObject playerObject;
@@ -23,13 +23,13 @@ public class Cave_Darkness : MonoBehaviour
         Debug.Log(playerObject.transform.position);
         if ((playerObject.transform.position[0]>-90 && playerObject.transform.position[1]<-11) && (playerObject.transform.position[0]<47 && playerObject.transform.position[1]>-105))
         {
-            if (playerLighting.intensity > 0.1f && Time.time > LightTimer)
+            if (playerLighting.intensity >= 0f && Time.time > LightTimer)
             {
                 playerLighting.intensity -= 0.01f;
                 LightTimer = Time.time + SpeedOfLight;
-                
+                Debug.Log(playerLighting.intensity);
             }
-            else if (playerLighting.intensity == 0f)
+            else if (playerLighting.intensity <= 0f)
             {
                 LightTimer = 0;
             }
@@ -40,10 +40,10 @@ public class Cave_Darkness : MonoBehaviour
             
             if (playerLighting.intensity <=0.4f && Time.time > LightTimer)
             {
-                playerLighting.intensity += 0.001f;
+                playerLighting.intensity += 0.01f;
                 LightTimer = Time.time + SpeedOfDarkness;
             }
-            else if (playerLighting.intensity <= 0.4f)
+            else if (playerLighting.intensity >= 0.4f)
             {
                 LightTimer = 0;
             }
