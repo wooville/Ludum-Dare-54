@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpSpeed;
     [SerializeField] private float _dashSpeed;
+    [SerializeField] private float _deathForce;
 
     private Rigidbody2D _rb;
     private Sprite _sprite;
@@ -18,8 +19,8 @@ public class Player : MonoBehaviour
     private float _direction;
     private bool _isFacingRight = true;
 
-    private bool _hasDoubleJump;
-    private bool _hasDash;
+    [SerializeField] private bool _hasDoubleJump;
+    [SerializeField] private bool _hasDash;
     private bool _hasLight;
 
     private bool doubleJumped = false;
@@ -32,15 +33,15 @@ public class Player : MonoBehaviour
     private bool applyDash;
     private bool _canMove = true;
 
+
+    private bool isAlive = true;
+
     // Start is called before the first frame update
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
         _sprite = GetComponent<Sprite>();
         _bodyCollider = GetComponent<Collider2D>();
-
-        _hasDoubleJump = false;
-        _hasDash = false;
         _hasLight = false;
 
         pickupDelegate += CheckPickup;
@@ -51,7 +52,23 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!isAlive) return;
         CheckInput();
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Debug.Log("die");
+            isAlive = false;
+            _animator.SetBool("isDying", true);
+
+            Vector2 deathDir = (_rb.position - (Vector2)collision.transform.position).normalized;
+
+
+            _rb.AddForce(deathDir * _deathForce);
+        }
     }
 
     private void CheckInput()
