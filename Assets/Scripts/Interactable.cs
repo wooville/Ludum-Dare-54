@@ -5,24 +5,12 @@ using UnityEngine;
 public class Interactable : MonoBehaviour
 {
     [SerializeField]
-    private Interaction.PICKUPS pickup = Interaction.PICKUPS.NONE;
-    [SerializeField]
     private GameObject interactionIndicator;
+    
     public bool isInteractable {get;set;} = false;
-    // protected Label buttonPromptLabel;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        // get ui component to be toggled
-        
-    }
 
     public virtual void Interact()
     {
-        if (pickup != Interaction.PICKUPS.NONE){
-            Player.pickupDelegate?.Invoke(pickup);
-        }
         Destroy(gameObject);
     }
 
