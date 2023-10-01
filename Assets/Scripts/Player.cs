@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpSpeed;
     [SerializeField] private float _dashSpeed;
+    [SerializeField] private float _deathForce;
 
     private Rigidbody2D _rb;
     private Sprite _sprite;
@@ -30,6 +31,9 @@ public class Player : MonoBehaviour
     private float moveForce;
     private bool applyDash;
 
+
+    private bool isAlive = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,7 +48,23 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!isAlive) return;
         CheckInput();
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Debug.Log("die");
+            isAlive = false;
+            _animator.SetBool("isDying", true);
+
+            Vector2 deathDir = (_rb.position - (Vector2)collision.transform.position).normalized;
+
+
+            _rb.AddForce(deathDir * _deathForce);
+        }
     }
 
     private void CheckInput()
