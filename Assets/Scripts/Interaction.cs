@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Interaction : MonoBehaviour
 {
-    [SerializeField]
-    private Collider2D interactionCollider;
+    [SerializeField] private Collider2D interactionCollider;
 	private List<Interactable> nearbyInteractables = new List<Interactable>();
     private int selectedInteractable = 0;
     public enum PICKUPS {NONE, WINGS, LIGHT, BOOTS, KEY1}

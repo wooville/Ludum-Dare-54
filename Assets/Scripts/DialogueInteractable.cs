@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class DialogueInteractable : Interactable
 {
-    [SerializeField]
-    private DialogueObject _dialogueObject;
+    [SerializeField] private DialogueObject _dialogueObject;
 
     public override void Interact()
     {

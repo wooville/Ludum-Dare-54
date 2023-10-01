@@ -54,6 +54,8 @@ public class Player : MonoBehaviour
         pickupDelegate += CheckPickup;
         DialogueUI.initiateDialogueDelegate += LockCharacterMovement;
         DialogueUI.endDialogueDelegate += UnlockCharacterMovement;
+        PickupInfoUI.initiatePickupDelegate += LockCharacterMovement;
+        PickupInfoUI.endPickupDelegate += UnlockCharacterMovement;
     }
 
     // Update is called once per frame
@@ -201,13 +203,12 @@ public class Player : MonoBehaviour
         switch(pickup){
             case Interaction.PICKUPS.WINGS:
                 _hasDash = true;
-                Debug.Log(_hasDash);
                 break;
             case Interaction.PICKUPS.LIGHT:
                 _hasLight = true;
                 break;
             case Interaction.PICKUPS.BOOTS:
-                _hasDash = true;
+                _hasDoubleJump = true;
                 break;
         }
     }
