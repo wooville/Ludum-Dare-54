@@ -347,12 +347,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 1120248827051636537}
   _speed: 4
-  _jumpSpeed: 9
-  _dashSpeed: 500
+  _doubleJumpSpeed: 6
+  _jumpButtonTime: 0.2
+  _jumpHeight: 2.1
+  _jumpCancelGravity: 3
+  _fallGravity: 2
+  _dashSpeed: 6
   _deathForce: 2000
-  _footCollider: {fileID: 8978836012897802016}
+  _groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
   _hasDoubleJump: 1
   _hasDash: 1
+  _footCollider: {fileID: 8978836012897802016}
 --- !u!114 &6260205369046841561
 MonoBehaviour:
   m_ObjectHideFlags: 0
