@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eedfe23b10255314b8e6c98367990219, type: 3}
-  m_Name: TestDialogue
+  m_Name: WingsPickupDialogue
   m_EditorClassIdentifier: 
   dialogue:
-  - Test Dialogue 1 !!!!
-  - Test Dialogue 2 !!!!
-  speakerName: Test Name
+  - Press (LSHIFT) in the air to dash!
+  speakerName: Angel Wings

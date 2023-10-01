@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject interactionIndicator;
+    [SerializeField] private GameObject interactionIndicator;
     
     public bool isInteractable {get;set;} = false;
 
