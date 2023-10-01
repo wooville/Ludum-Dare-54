@@ -1,40 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using Unity.VisualScripting;
+using UnityEditor.Callbacks;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
     [SerializeField] private float _speed;
-    [SerializeField] private float _jumpSpeed;
+    [SerializeField] private float _doubleJumpSpeed;
+    [SerializeField] private float _jumpButtonTime = 0.5f;
+    [SerializeField] private float _jumpHeight = 2;
+    [SerializeField] private float _jumpCancelGravity = 3f;
+    [SerializeField] private float _fallGravity = 2f;
     [SerializeField] private float _dashSpeed;
     [SerializeField] private float _deathForce;
-
-    private Rigidbody2D _rb;
-    private Sprite _sprite;
-    private Collider2D _bodyCollider;
-    [SerializeField] private Collider2D _footCollider;
-    private bool _isGrounded;
-    private float _direction;
-    private bool _isFacingRight = true;
-
+    [SerializeField] private LayerMask _groundLayer;
     [SerializeField] private bool _hasDoubleJump;
     [SerializeField] private bool _hasDash;
-    private bool _hasLight;
+    [SerializeField] private Collider2D _footCollider;
+    private Collider2D _bodyCollider;
+    private Rigidbody2D _rb;
+    private Sprite _sprite;
+    private float _dashTime;
+    private float _directionX;
 
-    private bool doubleJumped = false;
-    private bool dashed = false;
+    private float _dashX;
+    private float _jumpTime;
+    private bool _isGrounded;
+    private bool _isFacingRight = true;
+    private bool _hasLight;
+    private bool _canMove = true;
+    private bool _isAlive = true;
+
+    private bool _jumping;
+    private bool _jumpCancelled;
+
+    private bool _doubleJumped = false;
+    private bool _dashed = false;
+    private bool _dashing;
     public delegate void PickupDelegate(Interaction.PICKUPS pickup);
     public static PickupDelegate pickupDelegate;
-
-    private float dashForce;
-    private float moveForce;
-    private bool applyDash;
-    private bool _canMove = true;
-
-
-    private bool isAlive = true;
 
     // Start is called before the first frame update
     void Start()
@@ -52,8 +59,14 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isAlive) return;
+        if (!_isAlive) return;
+
+        CheckGrounded();
         CheckInput();
+        
+        // CheckJumping();
+
+
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -61,7 +74,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             Debug.Log("die");
-            isAlive = false;
+            _isAlive = false;
             _animator.SetBool("isDying", true);
 
             Vector2 deathDir = (_rb.position - (Vector2)collision.transform.position).normalized;
@@ -73,68 +86,100 @@ public class Player : MonoBehaviour
 
     private void CheckInput()
     {
-        _direction = Input.GetAxisRaw("Horizontal");
+        _directionX = Input.GetAxisRaw("Horizontal");
 
         if (_canMove){
+            // float speedDif = targetSpeed - _rb.velocity.x;
+            // float movement = speedDif * accelRate;
+            float speedDif = (_speed * _directionX) - _rb.velocity.x;
+            float movement = speedDif * 1.5f;
             // Horizontal Movement
-            if (!dashed)
+            if (!_dashed)
             {
-                _rb.velocity = new Vector2(_direction * _speed, _rb.velocity.y);
+                // _rb.velocity = new Vector2(_directionX * _speed, _rb.velocity.y);
+                _rb.AddForce(movement * Vector2.right);
             }
-            
 
             FlipSprite();
 
             if (Input.GetButtonDown("Jump"))
             {
-                if (_footCollider.IsTouchingLayers(LayerMask.GetMask("Foreground")))
+                if (_isGrounded)
                 {
-                    Vector2 jumpVelocity = new Vector2(0f, _jumpSpeed);
-                    _rb.velocity = new Vector2(_rb.velocity.x, _jumpSpeed);
+                    // Vector2 jumpVelocity = new Vector2(0f, _jumpSpeed);
+                    // _rb.velocity = new Vector2(_rb.velocity.x, _jumpSpeed);
+                    float jumpForce = Mathf.Sqrt(_jumpHeight * -2 * (Physics2D.gravity.y));
+                    _rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+                    _jumping = true;
+                    _jumpCancelled = false;
+                    _jumpTime = 0;
                 }
-                else if (_hasDoubleJump && !doubleJumped)
+                else if (_hasDoubleJump && !_doubleJumped)
                 {
-                    doubleJumped = true;
-                    Vector2 jumpVelocity = new Vector2(0f, _jumpSpeed);
-                    _rb.velocity = new Vector2(_rb.velocity.x, _jumpSpeed);
+                    _doubleJumped = true;
+                    // Vector2 jumpVelocity = new Vector2(0f, _jumpSpeed);
+                    _rb.gravityScale = 1f;
+                    _rb.velocity = new Vector2(_rb.velocity.x, _doubleJumpSpeed);
+                    // float jumpForce = Mathf.Sqrt(_jumpHeight * -1 * (Physics2D.gravity.y));
+                    // _rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
                 }
 
             }
 
+            if (_jumping){
+                _jumpTime += Time.deltaTime;
+                if (Input.GetButtonUp("Jump")){
+                    _jumpCancelled = true;
+                }
+                if (_jumpTime > _jumpButtonTime){
+                    _jumping = false;
+                }
+            }
+
             if (Input.GetButtonDown("Fire1"))
             {
-                if (_hasDash && !dashed && !_footCollider.IsTouchingLayers(LayerMask.GetMask("Foreground")))
+                if (_hasDash && !_dashed && !_isGrounded)
                 {
-                    Debug.Log("dashing");
-
-                    dashed = true;
-                    applyDash = true;
-                    dashForce = (_isFacingRight ? 1f : -1f) * _dashSpeed;
-                    Debug.Log(dashForce);
+                    _dashed = true;
+                    _dashing = true;
+                    _dashX = (_isFacingRight ? 1f : -1f) * _dashSpeed;
+                    _dashTime = 0f;
                 }
             }
         } else {
             _rb.velocity = Vector2.zero;
         }
-
-        
     }
 
     private void FixedUpdate() {
-        if (applyDash)
+        if (_dashing)
         {
-            _rb.AddForce(new Vector2(dashForce, 0f));
-            applyDash = false;
+            // _rb.AddForce(new Vector2(_dashX, 0f));
+            _dashTime += Time.deltaTime;
+            if (_dashTime < 0.25f){
+                _rb.gravityScale = 0f;
+                _rb.velocity = new Vector2(_dashX, 0);
+            } else {
+                _rb.gravityScale = 1f;
+                _dashing = false;
+            }
         }
 
-
-        if (_footCollider.IsTouchingLayers(LayerMask.GetMask("Foreground")))
+        if (_isGrounded)
         {
-            doubleJumped = false;
-            dashed = false;
+            _doubleJumped = false;
+            _dashed = false;
+            _rb.gravityScale = 1f;
+        }
+
+        if(_jumpCancelled && _jumping && _rb.velocity.y > 0)
+        {
+            _rb.gravityScale = _jumpCancelGravity;
+        } else if (_rb.velocity.y < 0){
+            _rb.gravityScale = _fallGravity;
         }
         
-        if (_direction != 0 && _canMove){
+        if (_directionX != 0 && _canMove){
             _animator.SetBool("isMoving", true);
         } else {
             _animator.SetBool("isMoving", false);
@@ -143,7 +188,7 @@ public class Player : MonoBehaviour
 
     private void FlipSprite()
     {
-        if (_canMove && _isFacingRight && _direction < 0f || !_isFacingRight && _direction > 0f)
+        if (_canMove && _isFacingRight && _directionX < 0f || !_isFacingRight && _directionX > 0f)
         {
             _isFacingRight = !_isFacingRight;
             Vector3 localScale = transform.localScale;
@@ -174,4 +219,8 @@ public class Player : MonoBehaviour
         _canMove = true;
     }
 
+    private void CheckGrounded(){
+        // _isGrounded = Physics2D.BoxCast(_bodyCollider.bounds.center, _bodyCollider.bounds.size, 0f, Vector2.down, .1f, _groundLayer);
+        _isGrounded = _footCollider.IsTouchingLayers(_groundLayer);
+    }
 }
