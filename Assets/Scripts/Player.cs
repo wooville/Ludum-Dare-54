@@ -30,7 +30,10 @@ public class Player : MonoBehaviour
     private float _dashX;
     private float _jumpTime;
     private bool _isGrounded;
-    private bool _isFacingRight = true;
+
+    private bool _isFacingRight = false;
+    private bool _hasLight;
+    
     private bool _canMove = true;
     private bool _isAlive = true;
 
@@ -152,6 +155,7 @@ public class Player : MonoBehaviour
                     _jumping = true;
                     _jumpCancelled = false;
                     _jumpTime = 0;
+                    // _animator.SetBool("isJumping", true);
                 }
                 else if (_hasDoubleJump && !_doubleJumped)
                 {
@@ -159,6 +163,7 @@ public class Player : MonoBehaviour
                     // Vector2 jumpVelocity = new Vector2(0f, _jumpSpeed);
                     _rb.gravityScale = 1f;
                     _rb.velocity = new Vector2(_rb.velocity.x, _doubleJumpSpeed);
+                    // _animator.SetBool("isJumping", true);
                     // float jumpForce = Mathf.Sqrt(_jumpHeight * -1 * (Physics2D.gravity.y));
                     // _rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
                 }
@@ -209,6 +214,9 @@ public class Player : MonoBehaviour
             _doubleJumped = false;
             _dashed = false;
             _rb.gravityScale = 1f;
+            _animator.SetBool("isJumping", false);
+        } else {
+            _animator.SetBool("isJumping", true);
         }
 
         if(_jumpCancelled && _jumping && _rb.velocity.y > 0)
@@ -223,6 +231,8 @@ public class Player : MonoBehaviour
         } else {
             _animator.SetBool("isMoving", false);
         }
+
+        _animator.SetFloat("yVelocity", _rb.velocity.y);
     }
 
     private void FlipSprite()
