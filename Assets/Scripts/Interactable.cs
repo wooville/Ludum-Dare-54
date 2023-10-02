@@ -15,14 +15,18 @@ public class Interactable : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.tag.Equals("Player")){
-            isInteractable = true;
-            interactionIndicator.SetActive(true);
-        }
+        EnterInteractArea(other);
     }
     
     private void OnTriggerExit2D(Collider2D other) {
         ExitInteractArea(other);
+    }
+
+    public virtual void EnterInteractArea(Collider2D other){
+        if (other.tag.Equals("Player")){
+            isInteractable = true;
+            interactionIndicator.SetActive(true);
+        }
     }
 
     public virtual void ExitInteractArea(Collider2D other){
