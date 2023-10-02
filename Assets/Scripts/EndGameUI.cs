@@ -10,27 +10,23 @@ public class EndGameUI : MonoBehaviour
     [SerializeField] private TMP_Text _infoLabel;
     [SerializeField] private ENDINGS _ending;
     private Typewriter _typewriter;
-    public delegate void GameEndDelegate(ENDINGS ending);
-    public static GameEndDelegate gameEndDelegate;
-    public delegate void InitiateGameEndDelegate(DialogueObject dialogueObject);
+    public delegate void InitiateGameEndDelegate(DialogueObject dialogueObject, ENDINGS ending);
     public static InitiateGameEndDelegate initiateGameEndDelegate;
     public delegate void ResetGameDelegate();
     public static ResetGameDelegate resetGameDelegate;
     public enum ENDINGS {ENDING_BOUNCER, ENDING_REBIRTH}
 
-
     private void Start() {
         _typewriter = GetComponent<Typewriter>();
         CloseInfoBox();
-        gameEndDelegate += AnimateEnding;
         initiateGameEndDelegate += ShowInfo;
         resetGameDelegate += CloseInfoBox;
         // ShowInfo(_testDialogue);
     }
 
-    public void ShowInfo(DialogueObject dialogueObject){
+    public void ShowInfo(DialogueObject dialogueObject, ENDINGS ending){
         _infoBox.SetActive(true);
-        _animationImage.SetActive(true);
+        AnimateEnding(ending);
         StartCoroutine(StepThroughDialogue(dialogueObject));
     }
 

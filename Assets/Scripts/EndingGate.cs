@@ -21,8 +21,7 @@ public class EndingGate : Interactable
     public override void Interact()
     {
         if (unlocked){
-            EndGameUI.gameEndDelegate?.Invoke(_ending);
-            EndGameUI.initiateGameEndDelegate?.Invoke(_endingDialogue);
+            EndGameUI.initiateGameEndDelegate?.Invoke(_endingDialogue, _ending);
         }
         
     }

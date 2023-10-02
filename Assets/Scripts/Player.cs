@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
         DialogueUI.endDialogueDelegate += UnlockCharacterMovement;
         PickupInfoUI.initiatePickupDelegate += LockCharacterMovement;
         PickupInfoUI.endPickupDelegate += UnlockCharacterMovement;
-        EndGameUI.gameEndDelegate += HandleGameEnd;
+        EndGameUI.initiateGameEndDelegate += HandleGameEnd;
 
         respawnManager = GameObject.FindObjectOfType<RespawnManager>();
     }
@@ -92,7 +92,9 @@ public class Player : MonoBehaviour
     {
         Debug.Log("die");
         _isAlive = false;
-        _animator.SetBool("isDying", true);
+        // _animator.SetBool("isDying", true);
+        _animator.SetBool("isJumping", false);
+        _animator.SetTrigger("died");
 
         ContactPoint2D contact = collision.contacts[0];
 
@@ -105,7 +107,8 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(respawnTimer);
         respawnManager.RespawnPlayer();
         _isAlive = true;
-        _animator.SetBool("isDying", false);
+        _animator.SetTrigger("respawn");
+        // _animator.SetBool("isDying", false);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -272,7 +275,7 @@ public class Player : MonoBehaviour
         _canMove = true;
     }
 
-    private void HandleGameEnd(EndGameUI.ENDINGS ending){
+    private void HandleGameEnd(DialogueObject dialogueObject, EndGameUI.ENDINGS ending){
         _rb.gravityScale = 0f;
         _canMove = false;
     }

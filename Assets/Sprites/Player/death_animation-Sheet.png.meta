@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 05415720fc962914faee0f8e8a422603
+guid: a5c23197aa19dc541a6b1bfb171b2ae6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 1
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -136,13 +136,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: heaven_ending-Sheet_0
+      name: death_animation-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 256
-        height: 128
+        width: 32
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,20 +150,167 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: afeb03b9ac3debe47b5cec51279023bc
-      internalID: 1856056593
+      spriteID: af387d7518dc5a246ad64da876c9b80f
+      internalID: -1871884006
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: heaven_ending-Sheet_1
+      name: death_animation-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3650dc64eae0e17438832290ef79611b
+      internalID: 1760278240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: death_animation-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ce6048bb512b0946a1a325f7ca9a2de
+      internalID: -907018164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: death_animation-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c467fcb533c42d4188de315590c98be
+      internalID: 90928080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: death_animation-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 492bbadfeebd56149a5f3226484ff697
+      internalID: 788375371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: death_animation-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddde9e28552dd8c4aa67ff0990d33282
+      internalID: -359212969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: death_animation-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f2a32d2971c11c4d8c55fda9b633862
+      internalID: -422758819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: death_animation-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9c27ae727eb69a4ebd002dea5e7e79e
+      internalID: -1256626393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: death_animation-Sheet_8
       rect:
         serializedVersion: 2
         x: 256
         y: 0
-        width: 256
-        height: 128
+        width: 32
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,20 +318,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 117a77cb8991240438dcfab4430b50fa
-      internalID: -926567634
+      spriteID: 5b992a017f80bb14998de679a2edc7b2
+      internalID: 1485347457
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: heaven_ending-Sheet_2
+      name: death_animation-Sheet_9
       rect:
         serializedVersion: 2
-        x: 512
+        x: 288
         y: 0
-        width: 256
-        height: 128
+        width: 32
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -192,29 +339,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 523de4793ecf8d14894a9229f0b43211
-      internalID: -105342187
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: heaven_ending-Sheet_3
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 0
-        width: 256
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 661ca355859ef2742b775dc276e3513f
-      internalID: -1435611461
+      spriteID: 4fe7683055a25d34dbe738b15461ec7d
+      internalID: 1630153733
       vertices: []
       indices: 
       edges: []
@@ -230,10 +356,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      heaven_ending-Sheet_0: 1856056593
-      heaven_ending-Sheet_1: -926567634
-      heaven_ending-Sheet_2: -105342187
-      heaven_ending-Sheet_3: -1435611461
+      death_animation-Sheet_0: -1871884006
+      death_animation-Sheet_1: 1760278240
+      death_animation-Sheet_2: -907018164
+      death_animation-Sheet_3: 90928080
+      death_animation-Sheet_4: 788375371
+      death_animation-Sheet_5: -359212969
+      death_animation-Sheet_6: -422758819
+      death_animation-Sheet_7: -1256626393
+      death_animation-Sheet_8: 1485347457
+      death_animation-Sheet_9: 1630153733
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
