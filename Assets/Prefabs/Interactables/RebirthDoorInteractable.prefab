@@ -126,11 +126,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53dc8d389a5e0664ea071a85387bd802, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionIndicator: {fileID: 4684349865798664722}
+  interactionIndicator: {fileID: 6303989299572165429}
   _ending: 1
   _endingDialogue: {fileID: 11400000, guid: 69964dce1fdc2bc4e93c506415626ae9, type: 2}
---- !u!1 &4684349865798664722 stripped
+--- !u!1 &6303989299572165429 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 5381784991534203708, guid: 8c1626299c5408f47b0bec3168e31117, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6688288910535297563, guid: 8c1626299c5408f47b0bec3168e31117, type: 3}
   m_PrefabInstance: {fileID: 841565709459308846}
   m_PrefabAsset: {fileID: 0}
