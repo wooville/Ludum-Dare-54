@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float _dashSpeed;
     [SerializeField] private float _deathForce;
     [SerializeField] private LayerMask _groundLayer;
+    [SerializeField] private LayerMask _oneWayLayer;
     [SerializeField] private bool _hasDoubleJump;
     [SerializeField] private bool _hasDash;
     [SerializeField] private bool _hasLight;
@@ -275,6 +276,6 @@ public class Player : MonoBehaviour
 
     private void CheckGrounded(){
         // _isGrounded = Physics2D.BoxCast(_bodyCollider.bounds.center, _bodyCollider.bounds.size, 0f, Vector2.down, .1f, _groundLayer);
-        _isGrounded = _footCollider.IsTouchingLayers(_groundLayer);
+        _isGrounded = _footCollider.IsTouchingLayers(_groundLayer) || _footCollider.IsTouchingLayers(_oneWayLayer);
     }
 }

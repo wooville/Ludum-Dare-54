@@ -11,7 +11,7 @@ public class Player_OneWayPlatform : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float direction = Input.GetAxisRaw("Vertical");
+        /* float direction = Input.GetAxisRaw("Vertical");
 
         if (direction < 0f)
         {
@@ -19,7 +19,7 @@ public class Player_OneWayPlatform : MonoBehaviour
             {
                 StartCoroutine(DisableCollision());
             }
-        }
+        } */
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
