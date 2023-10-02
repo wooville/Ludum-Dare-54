@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UIAnimation : MonoBehaviour
 {
-    public UnityEngine.UI.Image image;
+    public Image image;
     public Sprite[] spriteArrayEnding1;
     public Sprite[] spriteArrayEnding2;
     public float speed = .02f;
