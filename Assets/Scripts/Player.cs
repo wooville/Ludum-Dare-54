@@ -57,7 +57,6 @@ public class Player : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _sprite = GetComponent<Sprite>();
         _bodyCollider = GetComponent<Collider2D>();
-        _hasLight = true; ////////////////////////// Please change this to false once the game is ready ////////////////////////////////////////
 
         pickupDelegate += CheckPickup;
         DialogueUI.initiateDialogueDelegate += LockCharacterMovement;

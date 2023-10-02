@@ -54,3 +54,6 @@ TagManager:
   - name: Player
     uniqueID: 1149200283
     locked: 0
+  - name: Secret
+    uniqueID: 99271077
+    locked: 0
