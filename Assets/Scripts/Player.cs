@@ -19,8 +19,9 @@ public class Player : MonoBehaviour
     [SerializeField] private LayerMask _groundLayer;
     [SerializeField] private bool _hasDoubleJump;
     [SerializeField] private bool _hasDash;
-    [SerializeField] private Collider2D _footCollider;
     [SerializeField] private bool _hasLight;
+    [SerializeField] private bool _hasKey1;
+    [SerializeField] private Collider2D _footCollider;
     private Collider2D _bodyCollider;
     private Rigidbody2D _rb;
     private Sprite _sprite;
@@ -32,7 +33,6 @@ public class Player : MonoBehaviour
     private bool _isGrounded;
 
     private bool _isFacingRight = false;
-    private bool _hasLight;
     
     private bool _canMove = true;
     private bool _isAlive = true;
@@ -45,7 +45,8 @@ public class Player : MonoBehaviour
     private bool _dashing;
     public delegate void PickupDelegate(Interaction.PICKUPS pickup);
     public static PickupDelegate pickupDelegate;
-
+    public delegate void GameEndDelegate();
+    public static GameEndDelegate gameEndDelegate;
     private RespawnManager respawnManager;
     [SerializeField] private float respawnTimer;
 
@@ -257,13 +258,18 @@ public class Player : MonoBehaviour
             case Interaction.PICKUPS.BOOTS:
                 _hasDoubleJump = true;
                 break;
+            case Interaction.PICKUPS.KEY1:
+                _hasKey1 = true;
+                break;
         }
     }
     private void LockCharacterMovement(DialogueObject dialogueObject){
+        _rb.gravityScale = 0f;
         _canMove = false;
     }
 
     private void UnlockCharacterMovement(){
+        _rb.gravityScale = 1f;
         _canMove = true;
     }
 

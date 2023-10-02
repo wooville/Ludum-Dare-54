@@ -16,6 +16,22 @@ PrefabInstance:
       propertyPath: _pickupInfo
       value: 
       objectReference: {fileID: 11400000, guid: da727f3b9e341d340b50bf9875ca2660, type: 2}
+    - target: {fileID: 3280251671769592441, guid: bc845db3e6bebcf4f93820b18a7d88c4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2e4f1f5266b0b0f4db5cdb74754edeec, type: 3}
+    - target: {fileID: 3280251671769592441, guid: bc845db3e6bebcf4f93820b18a7d88c4, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280251671769592441, guid: bc845db3e6bebcf4f93820b18a7d88c4, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280251671769592441, guid: bc845db3e6bebcf4f93820b18a7d88c4, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5612645230405072348, guid: bc845db3e6bebcf4f93820b18a7d88c4, type: 3}
       propertyPath: m_Name
       value: WingsPickup
