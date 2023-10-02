@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: WingsPickupDialogue
   m_EditorClassIdentifier: 
   dialogue:
-  - Press (LSHIFT) in the air to dash!
-  speakerName: Angel Wings
+  - Press (LSHIFT) in the air to dash forwards.
+  speakerName: Wings

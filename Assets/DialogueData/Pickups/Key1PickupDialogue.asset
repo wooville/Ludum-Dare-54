@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Key1PickupDialogue
   m_EditorClassIdentifier: 
   dialogue:
-  - Press (LSHIFT) in the air to dash!
-  speakerName: Angel Wings
+  - Looks like the last one...
+  speakerName: Soul

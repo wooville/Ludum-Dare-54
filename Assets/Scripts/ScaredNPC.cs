@@ -5,14 +5,18 @@ using UnityEngine;
 public class ScaredNPC : DialogueInteractable
 {
     [SerializeField] Animator animator;
-    public override void EnterInteractArea(Collider2D other){
-        base.ExitInteractArea(other);
+
+    private void Start() {
+        DialogueUI.endDialogueDelegate += HideAnimation;
+    }
+
+    public override void Interact()
+    {
+        base.Interact();
         animator.SetBool("isActive", true);
     }
 
-    public override void ExitInteractArea(Collider2D other){
-        base.ExitInteractArea(other);
+    private void HideAnimation(){
         animator.SetBool("isActive", false);
-        Debug.Log("test");
     }
 }

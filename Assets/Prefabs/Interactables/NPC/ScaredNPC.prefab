@@ -34,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5489970017058488441, guid: 27168450598237441a9d978ed2bf0e27, type: 3}
       propertyPath: m_Size.y
-      value: 2.2164683
+      value: 3.1302745
       objectReference: {fileID: 0}
     - target: {fileID: 5489970017058488441, guid: 27168450598237441a9d978ed2bf0e27, type: 3}
       propertyPath: m_Offset.x
@@ -42,7 +42,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5489970017058488441, guid: 27168450598237441a9d978ed2bf0e27, type: 3}
       propertyPath: m_Offset.y
-      value: -0.608234
+      value: -0.15133083
       objectReference: {fileID: 0}
     - target: {fileID: 5489970017058488441, guid: 27168450598237441a9d978ed2bf0e27, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -152,5 +152,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionIndicator: {fileID: 3169486863477008949}
-  _dialogueObject: {fileID: 11400000, guid: 69964dce1fdc2bc4e93c506415626ae9, type: 2}
+  _dialogueObject: {fileID: 11400000, guid: d685c3e8817d1f449ad49fe7b26f7070, type: 2}
   animator: {fileID: 2352758073764726606}
