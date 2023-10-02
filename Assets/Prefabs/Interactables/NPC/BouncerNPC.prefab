@@ -96,8 +96,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: BouncerNPC
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5666483862135521554, guid: 27168450598237441a9d978ed2bf0e27, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8452876066047338299, guid: 27168450598237441a9d978ed2bf0e27, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2216505690822742666}
   m_SourcePrefab: {fileID: 100100000, guid: 27168450598237441a9d978ed2bf0e27, type: 3}
+--- !u!1 &661128967568259963 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8452876066047338299, guid: 27168450598237441a9d978ed2bf0e27, type: 3}
+  m_PrefabInstance: {fileID: 8962841331286629440}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2216505690822742666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661128967568259963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62d0b46c381ba574ba56677d6ab16447, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionIndicator: {fileID: 6140162408993900884}
+  _dialogueObject: {fileID: 0}
+  _dialogueObjectBeforeSwap: {fileID: 11400000, guid: d89ad357d97f0d14dbf92d257a1cc6da, type: 2}
+  _dialogueObjectAfterSwap: {fileID: 11400000, guid: 980370f7d621aea4692662a878f34ed2, type: 2}
+--- !u!1 &6140162408993900884 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2978099373290722580, guid: 27168450598237441a9d978ed2bf0e27, type: 3}
+  m_PrefabInstance: {fileID: 8962841331286629440}
+  m_PrefabAsset: {fileID: 0}

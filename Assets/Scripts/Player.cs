@@ -272,6 +272,7 @@ public class Player : MonoBehaviour
                 break;
             case Interaction.PICKUPS.KEY1:
                 _hasKey1 = true;
+                BouncerInteractable.soulSwapDialogueDelegate?.Invoke();
                 break;
         }
     }
