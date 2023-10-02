@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     [SerializeField] private bool _hasDoubleJump;
     [SerializeField] private bool _hasDash;
     [SerializeField] private Collider2D _footCollider;
+    [SerializeField] private bool _hasLight;
     private Collider2D _bodyCollider;
     private Rigidbody2D _rb;
     private Sprite _sprite;
@@ -30,7 +31,6 @@ public class Player : MonoBehaviour
     private float _jumpTime;
     private bool _isGrounded;
     private bool _isFacingRight = true;
-    private bool _hasLight;
     private bool _canMove = true;
     private bool _isAlive = true;
 
@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _sprite = GetComponent<Sprite>();
         _bodyCollider = GetComponent<Collider2D>();
-        _hasLight = false;
+        _hasLight = true; ////////////////////////// Please change this to false once the game is ready ////////////////////////////////////////
 
         pickupDelegate += CheckPickup;
         DialogueUI.initiateDialogueDelegate += LockCharacterMovement;
@@ -112,6 +112,15 @@ public class Player : MonoBehaviour
         {
             respawnManager.SetRespawnPoint(other.transform.position);
         }
+    }
+    public bool getHasLight()
+    {
+        return _hasLight;
+    }
+
+    public bool isAlive()
+    {
+        return _isAlive;
     }
 
     private void CheckInput()

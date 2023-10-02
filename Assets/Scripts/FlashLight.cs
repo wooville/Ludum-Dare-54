@@ -9,8 +9,8 @@ public class Flashlight : MonoBehaviour
     private Light2D playerLighting;
     float toggleFlashlightTime = 0.2f;
     float nextFlashlightTime = 0.0f;
-
     private GameObject playerObject;
+    private Player player;
 
     //Function calls
     private void setFlashlightOff(Light2D flashlight)
@@ -23,26 +23,38 @@ public class Flashlight : MonoBehaviour
         flashlight.enabled = (!flashlight.enabled);
     }
 
+    public bool getFlashLightStatus()
+    {
+        return playerLighting.enabled;
+    }
+
     //Main
     void Start()
     {
         playerLighting = GetComponent<Light2D>();
         setFlashlightOff(playerLighting);
         playerObject = GameObject.FindWithTag("Player");
+        player = GameObject.FindObjectOfType(typeof(Player)) as Player;
+        Debug.Log(player.name);
     }
 
     // Update is called once per frame
     
     void Update()
     {
-        if (Input.GetKey(KeyCode.E) && Time.time > nextFlashlightTime) //change mapping if needed
+        if (player.isAlive() == false)
         {
-            //Needs to be another if statement
+            setFlashlightOff(playerLighting);
+        }
+        else if (player.getHasLight() == true && Input.GetKey(KeyCode.E) && Time.time > nextFlashlightTime) //change mapping if needed
+        {
             toggleFlashLight(playerLighting);
             nextFlashlightTime = Time.time + toggleFlashlightTime;
-
         }
-        //playerLighting.transform.rotation = Quaternion.LookRotation(realativePos);
+
+        
+        
+        
     
     }
 }

@@ -5,16 +5,25 @@ using UnityEngine.Rendering.Universal;
 
 public class Global_lights : MonoBehaviour
 {
-    private Light2D playerLighting;
+    private Light2D globalLight;
+    private Flashlight flashLight;
     private GameObject playerObject;
     float SpeedOfLight = 0.05f;
     float SpeedOfDarkness = 0.2f;
     float LightTimer = 0f;
+    bool inDarkness = false;
+    bool isDone = false;
+    [SerializeField] float intensityInCave = 0.01f;
+
+
+    Player player;
     // Start is called before the first frame update
     void Start()
     {
-        playerLighting = GetComponent<Light2D>();
+        globalLight = GetComponent<Light2D>();
         playerObject = GameObject.FindWithTag("Player");
+        player = GameObject.FindObjectOfType(typeof(Player)) as Player;
+        flashLight = GameObject.FindObjectOfType(typeof(Flashlight)) as Flashlight;
     }
 
     // Update is called once per frame
@@ -22,29 +31,43 @@ public class Global_lights : MonoBehaviour
     {
         if ((playerObject.transform.position[0]>-90 && playerObject.transform.position[1]<-11) && (playerObject.transform.position[0]<47 && playerObject.transform.position[1]>-105))
         {
-            if (playerLighting.intensity >= 0f && Time.time > LightTimer)
+            if (globalLight.intensity >= 0f && Time.time > LightTimer && inDarkness == false)
             {
-                playerLighting.intensity -= 0.01f;
+                globalLight.intensity -= 0.01f;
                 LightTimer = Time.time + SpeedOfLight;
-                Debug.Log(playerLighting.intensity);
+
+            } 
+            else if(globalLight.intensity <intensityInCave && player.getHasLight() == true && flashLight.getFlashLightStatus() == true && isDone == true)
+            {
+                globalLight.intensity = intensityInCave;
+                inDarkness = true;
             }
-            else if (playerLighting.intensity <= 0f)
+            else if (globalLight.intensity <= 0f)
             {
                 LightTimer = 0;
+                inDarkness = true;
+                isDone = true;
             }
-            Debug.Log("false");
+            else if (flashLight.getFlashLightStatus() == false && isDone == true)
+            {
+                globalLight.intensity = 0f;
+                inDarkness = true;
+            }
         }
         else
         {
             
-            if (playerLighting.intensity <=0.4f && Time.time > LightTimer)
+            if (globalLight.intensity <=0.4f && Time.time > LightTimer)
             {
-                playerLighting.intensity += 0.01f;
+                globalLight.intensity += 0.01f;
                 LightTimer = Time.time + SpeedOfDarkness;
+                inDarkness = false;
+                isDone = false;
             }
-            else if (playerLighting.intensity >= 0.4f)
+            else if (globalLight.intensity >= 0.4f)
             {
                 LightTimer = 0;
+                
             }
         }
     }

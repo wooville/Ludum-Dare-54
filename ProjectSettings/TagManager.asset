@@ -7,7 +7,12 @@ TagManager:
   - Enemy
   - Interactable
   - OneWayPlatform
+<<<<<<< Updated upstream
   - Checkpoint
+=======
+  - GlobalLight
+  - FlashLight
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
