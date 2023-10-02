@@ -128,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionIndicator: {fileID: 6303989299572165429}
   _ending: 1
-  _endingDialogue: {fileID: 11400000, guid: 69964dce1fdc2bc4e93c506415626ae9, type: 2}
+  _endingDialogue: {fileID: 11400000, guid: 8a77d0d1082aae947abb1ddf0d86923b, type: 2}
 --- !u!1 &6303989299572165429 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6688288910535297563, guid: 8c1626299c5408f47b0bec3168e31117, type: 3}
