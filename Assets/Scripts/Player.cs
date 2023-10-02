@@ -45,8 +45,6 @@ public class Player : MonoBehaviour
     private bool _dashing;
     public delegate void PickupDelegate(Interaction.PICKUPS pickup);
     public static PickupDelegate pickupDelegate;
-    public delegate void GameEndDelegate();
-    public static GameEndDelegate gameEndDelegate;
     private RespawnManager respawnManager;
     [SerializeField] private float respawnTimer;
 
@@ -56,13 +54,13 @@ public class Player : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _sprite = GetComponent<Sprite>();
         _bodyCollider = GetComponent<Collider2D>();
-        _hasLight = true; ////////////////////////// Please change this to false once the game is ready ////////////////////////////////////////
 
         pickupDelegate += CheckPickup;
         DialogueUI.initiateDialogueDelegate += LockCharacterMovement;
         DialogueUI.endDialogueDelegate += UnlockCharacterMovement;
         PickupInfoUI.initiatePickupDelegate += LockCharacterMovement;
         PickupInfoUI.endPickupDelegate += UnlockCharacterMovement;
+        EndGameUI.gameEndDelegate += HandleGameEnd;
 
         respawnManager = GameObject.FindObjectOfType<RespawnManager>();
     }
@@ -271,6 +269,11 @@ public class Player : MonoBehaviour
     private void UnlockCharacterMovement(){
         _rb.gravityScale = 1f;
         _canMove = true;
+    }
+
+    private void HandleGameEnd(EndGameUI.ENDINGS ending){
+        _rb.gravityScale = 0f;
+        _canMove = false;
     }
 
     private void CheckGrounded(){

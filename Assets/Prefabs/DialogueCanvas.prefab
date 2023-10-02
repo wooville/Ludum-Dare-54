@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1261962746436364019}
   - component: {fileID: 6079313299550275449}
   - component: {fileID: 588321473612494475}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: DialogueLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 9215097460014398842}
   - component: {fileID: 4379397671122638360}
   - component: {fileID: 9091411933011702958}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: NameLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -279,7 +279,7 @@ GameObject:
   - component: {fileID: 3441396673091336824}
   - component: {fileID: 2261551302171541153}
   - component: {fileID: 7700603818456989510}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: NameBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -355,7 +355,7 @@ GameObject:
   - component: {fileID: 2724556552562555967}
   - component: {fileID: 7417852801515979753}
   - component: {fileID: 1721538276459668215}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: DialogueBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -434,7 +434,7 @@ GameObject:
   - component: {fileID: 2604750506065940107}
   - component: {fileID: 6228345370594601043}
   - component: {fileID: 244747037462328019}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: DialogueCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
