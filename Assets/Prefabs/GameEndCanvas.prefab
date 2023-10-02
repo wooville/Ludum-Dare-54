@@ -224,16 +224,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 6068483318431391856}
   spriteArrayEnding1:
-  - {fileID: -1975694671, guid: 230fc552d3abda247b6c5e5f3709a58c, type: 3}
-  - {fileID: -1743286148, guid: 230fc552d3abda247b6c5e5f3709a58c, type: 3}
-  - {fileID: 528790708, guid: 230fc552d3abda247b6c5e5f3709a58c, type: 3}
-  - {fileID: -245525659, guid: 230fc552d3abda247b6c5e5f3709a58c, type: 3}
-  - {fileID: 1476885577, guid: 230fc552d3abda247b6c5e5f3709a58c, type: 3}
-  - {fileID: 1858474202, guid: 230fc552d3abda247b6c5e5f3709a58c, type: 3}
-  - {fileID: 714203532, guid: 230fc552d3abda247b6c5e5f3709a58c, type: 3}
-  - {fileID: -819787905, guid: 230fc552d3abda247b6c5e5f3709a58c, type: 3}
-  - {fileID: 191474325, guid: 230fc552d3abda247b6c5e5f3709a58c, type: 3}
-  - {fileID: 1869096093, guid: 230fc552d3abda247b6c5e5f3709a58c, type: 3}
+  - {fileID: 1856056593, guid: 05415720fc962914faee0f8e8a422603, type: 3}
+  - {fileID: -926567634, guid: 05415720fc962914faee0f8e8a422603, type: 3}
+  - {fileID: -105342187, guid: 05415720fc962914faee0f8e8a422603, type: 3}
+  - {fileID: -1435611461, guid: 05415720fc962914faee0f8e8a422603, type: 3}
   spriteArrayEnding2:
   - {fileID: -1975694671, guid: 230fc552d3abda247b6c5e5f3709a58c, type: 3}
   - {fileID: -1743286148, guid: 230fc552d3abda247b6c5e5f3709a58c, type: 3}

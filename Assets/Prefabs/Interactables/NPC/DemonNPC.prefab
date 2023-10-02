@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &5974895812734375097
+--- !u!1001 &7393613677530625709
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 1526563467141030046, guid: 27168450598237441a9d978ed2bf0e27, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -736322835, guid: de1d578095ace2747bb76e96e8f3bb99, type: 3}
+      objectReference: {fileID: 1468308277, guid: 1cc476d81f10ae24c9302a23318a9fba, type: 3}
     - target: {fileID: 1526563467141030046, guid: 27168450598237441a9d978ed2bf0e27, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -26,19 +26,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5489970017058488441, guid: 27168450598237441a9d978ed2bf0e27, type: 3}
       propertyPath: m_Size.x
-      value: 1.9987298
+      value: 1.994813
       objectReference: {fileID: 0}
     - target: {fileID: 5489970017058488441, guid: 27168450598237441a9d978ed2bf0e27, type: 3}
       propertyPath: m_Size.y
-      value: 2.99746
+      value: 3.005293
       objectReference: {fileID: 0}
     - target: {fileID: 5489970017058488441, guid: 27168450598237441a9d978ed2bf0e27, type: 3}
       propertyPath: m_Offset.x
-      value: -0.0058748126
+      value: 0.007833242
       objectReference: {fileID: 0}
     - target: {fileID: 5489970017058488441, guid: 27168450598237441a9d978ed2bf0e27, type: 3}
       propertyPath: m_Offset.y
-      value: 0.007833183
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5489970017058488441, guid: 27168450598237441a9d978ed2bf0e27, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -90,7 +90,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8452876066047338299, guid: 27168450598237441a9d978ed2bf0e27, type: 3}
       propertyPath: m_Name
-      value: HatNPC
+      value: DemonNPC
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -98,24 +98,24 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8452876066047338299, guid: 27168450598237441a9d978ed2bf0e27, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5463269555773763284}
+      addedObject: {fileID: 3013799257120043577}
   m_SourcePrefab: {fileID: 100100000, guid: 27168450598237441a9d978ed2bf0e27, type: 3}
---- !u!1 &2856898355503002498 stripped
+--- !u!1 &1429261248105124246 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8452876066047338299, guid: 27168450598237441a9d978ed2bf0e27, type: 3}
-  m_PrefabInstance: {fileID: 5974895812734375097}
+  m_PrefabInstance: {fileID: 7393613677530625709}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &5463269555773763284
+--- !u!95 &3013799257120043577
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2856898355503002498}
+  m_GameObject: {fileID: 1429261248105124246}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d0d8cf24653fbbf45be510f71a790cf6, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0a5d150d88afe224eb6ddfe59b9fd628, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
