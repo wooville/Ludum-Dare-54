@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
 
     private bool _doubleJumped = false;
     private bool _dashed = false;
-    private bool _dashing;
+    private bool _dashing = false;
     public delegate void PickupDelegate(Interaction.PICKUPS pickup);
     public static PickupDelegate pickupDelegate;
     private RespawnManager respawnManager;
@@ -127,6 +127,16 @@ public class Player : MonoBehaviour
     public bool isAlive()
     {
         return _isAlive;
+    }
+
+    public bool isDashing()
+    {
+        return _dashing;
+    }
+
+    public bool isGrounded()
+    {
+        return _isGrounded;
     }
 
     private void CheckInput()
