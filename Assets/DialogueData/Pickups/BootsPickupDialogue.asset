@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: BootsPickupDialogue
   m_EditorClassIdentifier: 
   dialogue:
-  - Press (LSHIFT) in the air to dash!
+  - Press (Space) in the air to jump a second time.
   speakerName: Angel Wings

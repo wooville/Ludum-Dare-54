@@ -25,13 +25,33 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5489970017058488441, guid: 27168450598237441a9d978ed2bf0e27, type: 3}
+      propertyPath: m_Size.x
+      value: 2.693327
+      objectReference: {fileID: 0}
+    - target: {fileID: 5489970017058488441, guid: 27168450598237441a9d978ed2bf0e27, type: 3}
+      propertyPath: m_Size.y
+      value: 3.1166573
+      objectReference: {fileID: 0}
+    - target: {fileID: 5489970017058488441, guid: 27168450598237441a9d978ed2bf0e27, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.048846006
+      objectReference: {fileID: 0}
+    - target: {fileID: 5489970017058488441, guid: 27168450598237441a9d978ed2bf0e27, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.075981915
+      objectReference: {fileID: 0}
+    - target: {fileID: 5489970017058488441, guid: 27168450598237441a9d978ed2bf0e27, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.48
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5489970017058488441, guid: 27168450598237441a9d978ed2bf0e27, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.64
+      value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 5666483862135521554, guid: 27168450598237441a9d978ed2bf0e27, type: 3}
+      propertyPath: _dialogueObject
+      value: 
+      objectReference: {fileID: 11400000, guid: d89ad357d97f0d14dbf92d257a1cc6da, type: 2}
     - target: {fileID: 7411138006230840877, guid: 27168450598237441a9d978ed2bf0e27, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

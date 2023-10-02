@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eedfe23b10255314b8e6c98367990219, type: 3}
-  m_Name: Key1PickupDialogue
+  m_Name: DemonDialogue
   m_EditorClassIdentifier: 
   dialogue:
-  - Looks like the last one...
-  speakerName: Soul
+  - What's that? On a quest to find your soul?
+  - You should know that those white gates aren't the only way out of here...
+  - '>:)'
+  speakerName: ???

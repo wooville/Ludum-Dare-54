@@ -10,8 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eedfe23b10255314b8e6c98367990219, type: 3}
-  m_Name: Key1PickupDialogue
+  m_Name: ScaredDialogue
   m_EditorClassIdentifier: 
   dialogue:
-  - Looks like the last one...
-  speakerName: Soul
+  - Woah! You scared me!
+  - Do you know how to get out of here?
+  - That bouncer said that I should look for a soul, but there's so few around I
+    can't seem to find any!
+  - Anyway... it's so dark down there... and I haven't seen anybody come back out!
+  - If only I had a light...
+  speakerName: Frightened Ghost

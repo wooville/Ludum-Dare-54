@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: LightPickupDialogue
   m_EditorClassIdentifier: 
   dialogue:
-  - Press (LSHIFT) in the air to dash!
-  speakerName: Angel Wings
+  - Press (F) to toggle your flashlight.
+  speakerName: Flashlight
