@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - Interactable
   - OneWayPlatform
+  - FlashLight
+  - GlobalLight
   layers:
   - Default
   - TransparentFX
@@ -50,6 +52,9 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 935353659
+    locked: 0
+  - name: Dash Trail
+    uniqueID: 812054469
     locked: 0
   - name: Player
     uniqueID: 1149200283
