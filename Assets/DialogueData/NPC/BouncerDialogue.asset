@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
   - ... Next!
-  - (where is your soul)
+  - Where's your soul?
+  - You can't get in here without a soul.
   - Why do they always cry...
   - "Look, kid. I\u2019ll help you out. This is the realm of lost souls. You can't
     get out without finding yours first."
