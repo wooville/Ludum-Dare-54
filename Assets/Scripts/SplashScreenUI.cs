@@ -6,16 +6,24 @@ public class SplashScreenUI : MonoBehaviour
 {
     public delegate void StartGameDelegate();
     public static StartGameDelegate startGameDelegate;
+
+    private bool started = false;
     // Start is called before the first frame update
     void Start()
     {
+        started = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Jump")){
-            startGameDelegate?.Invoke();
+        if (!started)
+        {
+            if (Input.GetButtonDown("Jump"))
+            {
+                started = true;
+                startGameDelegate?.Invoke();
+            }
         }
     }
 }

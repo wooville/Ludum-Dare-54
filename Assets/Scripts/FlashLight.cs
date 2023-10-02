@@ -46,7 +46,7 @@ public class Flashlight : MonoBehaviour
         {
             setFlashlightOff(playerLighting);
         }
-        else if (player.getHasLight() == true && Input.GetKey(KeyCode.E) && Time.time > nextFlashlightTime) //change mapping if needed
+        else if (player.getHasLight() == true && Input.GetKey(KeyCode.F) && Time.time > nextFlashlightTime) //change mapping if needed
         {
             toggleFlashLight(playerLighting);
             nextFlashlightTime = Time.time + toggleFlashlightTime;
