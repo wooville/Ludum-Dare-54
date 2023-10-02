@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: BouncerSoulDialogue
   m_EditorClassIdentifier: 
   dialogue:
-  - (for when you have your soul)
+  - "You got the goods? I\u2019m surprised a scrawny thing like you made it this
+    far."
+  - "Alright, a deal\u2019s a deal. "
+  - "If the big guy asks, you don\u2019t know me."
   speakerName: Holy Bouncer
