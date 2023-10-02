@@ -62,6 +62,10 @@ public class Player : MonoBehaviour
         PickupInfoUI.endPickupDelegate += UnlockCharacterMovement;
         EndGameUI.initiateGameEndDelegate += HandleGameEnd;
 
+        SplashScreenUI.startGameDelegate += UnlockCharacterMovement;
+        _rb.gravityScale = 0f;
+        _canMove = false;
+
         respawnManager = GameObject.FindObjectOfType<RespawnManager>();
     }
 
